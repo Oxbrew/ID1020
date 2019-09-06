@@ -1,6 +1,24 @@
 import java.util.*;
 
 public class LinkedListStack<T> implements Iterable<T> {
+	public Iterator<T> iterator(){
+
+		return new LinkedListIterator<T>();
+		Node<T> current = head;
+
+		public boolean hasNext(){
+			return current != null;
+		}
+
+		public T next(){
+			Node next = current;
+			current = current.next;
+			return next.T
+		}
+	}
+
+
+}
 	private Node head;
 
 	private class Node {
@@ -32,5 +50,5 @@ public class LinkedListStack<T> implements Iterable<T> {
 
 public class javaiterative {
 	public static void main(String[] args) {
-	}
+		Stack<String> stack = new  LinkedListStack<String>();	}
 }
