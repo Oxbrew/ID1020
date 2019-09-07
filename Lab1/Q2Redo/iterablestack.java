@@ -1,5 +1,5 @@
 
-public class Iterablestack{
+public class Iterablestack {
 	static int head = 0;
 	static int fixedSize = 20;
 	static char[] stackarray = new char[fixedSize];
