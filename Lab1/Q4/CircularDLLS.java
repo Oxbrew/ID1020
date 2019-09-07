@@ -5,6 +5,12 @@ public class CircularDLLS<T> implements Iterable<T> {
 	private Node<T> tail;
 	private int size;
 
+	public CircularDLLS(){
+		this.head = null;
+		this.tail = null;
+		this.size = 0;
+	}
+
 	public boolean isEmpty(){
 		return head == null;
 	}
