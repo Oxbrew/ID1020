@@ -3,7 +3,7 @@ import java.util.*;
 public class CircularQueueIterator<T> implements Iterator<T>{
 Node<T> current;
 
-	public CircularQueueIterator(GenericDLLS<T> linkedlist){
+	public CircularQueueIterator(CircularDLLS<T> linkedlist){
 		current = linkedlist.getHead();
 	}
 
