@@ -6,8 +6,11 @@ public class main {
 		InputStreamReader in = new InputStreamReader(System.in);
 		Iterablestack iterable = new Iterablestack();
 		char c;
-		while(c != '\n'){
+		while(true){
 			c = (char) in.read();
+			if (c == '\n') {
+				break;				
+			}
 			iterable.push(c);
 		}
 		System.out.println("Reversed: ");
