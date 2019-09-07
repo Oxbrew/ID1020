@@ -1,16 +1,16 @@
 class Circularmain {
 	public static void main(String[] args) {
 	CircularDLLS<Character> list = new CircularDLLS<>();
-	list.queueHead('a');
+	list.queueTail('a');
 	list.printTheThing();
 
-	list.queueHead('b');
+	list.queueTail('b');
 	list.printTheThing();
 
-	list.queueHead('p');
+	list.queueTail('p');
 	list.printTheThing();
 
-	list.queueHead('h');
+	list.queueTail('h');
 	list.printTheThing();
 
 	list.queueHead('G');

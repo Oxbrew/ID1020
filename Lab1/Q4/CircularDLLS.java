@@ -37,7 +37,7 @@ public class CircularDLLS<T> implements Iterable<T> {
 
 
 	public void queueHead(T element){
-		Node<T> newNode = new Node<>(element);
+		Node<T> newNode = new Node<>(element, head);
 
 		if (isEmpty()) {
 			head = tail = newNode;
@@ -46,15 +46,15 @@ public class CircularDLLS<T> implements Iterable<T> {
 			this.size++;
 
 		} else {
+			tail.next = newNode;
 			head = newNode;
-			tail.next = head;
 			this.size++;
 		}
 	}
 
 
 	public void queueTail(T element){
-		Node<T> newNode = new Node<>(element);
+		Node<T> newNode = new Node<>(element, head);
 
 		if (isEmpty()) {
 			head = tail = newNode;
@@ -63,8 +63,8 @@ public class CircularDLLS<T> implements Iterable<T> {
 			this.size++;
 
 		} else {
-			tail = newNode;
 			tail.next = newNode;
+			tail = newNode;
 			this.size++;
 		}
 	}

@@ -12,7 +12,7 @@ Node<T> current;
 	}
 
 	public T next(){
-		T item = current.getElement();
+		T item = current.element;
 		current = current.next;
 		return item;
 	}
