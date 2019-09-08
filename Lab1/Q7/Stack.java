@@ -17,4 +17,8 @@ public class Stack {
 	public static char peek(){
 		return stackarray[head];
 	}
+
+	public boolean isEmpty(){
+		return (head == 0);
+	}
 }
