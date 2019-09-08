@@ -1,7 +1,7 @@
 public class Stack {
 	static int head = 0;
-	static int fixedSize = 20;
-	static char[] stackarray = new char[fixedSize];
+	static int size = 20;
+	static char[] stackarray = new char[size];
 
 	public static void push(char c){
 		stackarray[head] = c;

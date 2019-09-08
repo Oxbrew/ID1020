@@ -2,7 +2,6 @@ public class Bracketfilter{
 
 	public static boolean Bracketfilter(String text) {
 		if (text.isEmpty()) {
-			System.out.println("Empty");
 			return false;
 		}
 		Stack stack = new Stack();
