@@ -1,6 +1,18 @@
+/*
+*@author: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab1
+*
+*Input: Enter characters when running or redirect textfile
+*Output: Reversed characters
+*
+*Goal: Use a recursive function in java to reverse characters.
+*/
+
+
 import java.io.*;
 
-public class main {
+public class Q2main {
 
 		public static void main(String[] args) throws IOException {
 		InputStreamReader in = new InputStreamReader(System.in);

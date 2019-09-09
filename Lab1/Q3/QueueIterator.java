@@ -1,3 +1,14 @@
+/*
+*@author: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab1
+*
+*Input:Tests already implemented.
+*Output: Printed current queue.
+*
+*Goal: Generic FIFO Queue using double linked list.
+*/
+
 import java.util.*;
 
 public class QueueIterator<T> implements Iterator<T>{
