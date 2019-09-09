@@ -42,7 +42,7 @@ public class Bracketfilter{
 
 	public static void main(String[] args) {
 
-		System.out.println(Bracketfilter("(([{}]))"));
+		System.out.println(Bracketfilter("(([3{2}]))"));
 		System.out.println(Bracketfilter("{}"));
 		System.out.println(Bracketfilter("(({}]))"));
 		System.out.println(Bracketfilter(")("));
