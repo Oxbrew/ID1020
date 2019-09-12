@@ -2,26 +2,26 @@ import java.util.*;
 
 public class Bracketfilter{
 
-	public static boolean Bracketfilter(String text) {
+	public static boolean Bracketfilter(String text) { //method to filter
 		if (text.isEmpty()) {
 			return false;
 		}
-		Stack stack = new Stack();
+		Stack stack = new Stack(); //create new stack object
 		char c;
 		for (int i = 0;i < text.length() ; i++ ) {
-			c = text.charAt(i);
+			c = text.charAt(i); //for each element entered...
 
-			if (c == '(' || c == '{' || c == '[') {
+			if (c == '(' || c == '{' || c == '[') { //push if the charcter is a bracket
 				stack.push(c);
-			} else if (c == ')') {
+			} else if (c == ')') { //check required for each end bracket.
 				if (stack.isEmpty()) {
 					return false;
-				} else if (stack.peek() == '(') {
+				} else if (stack.peek() == '(') { //check if stack corresponds to a completed bracket.
 					stack.pop();
 				} else {
 					return false;
 				}
-			} else if (c == '}') {
+			} else if (c == '}') { //check
 				if (stack.isEmpty()) {
 					return false;
 				} else if (stack.peek() == '{') {
@@ -29,7 +29,7 @@ public class Bracketfilter{
 				} else {
 					return false;
 				}
-			} else if (c == ']') {
+			} else if (c == ']') { //check
 				if (stack.isEmpty()) {
 					return false;
 				} else if (stack.peek() == '[') {
@@ -42,7 +42,7 @@ public class Bracketfilter{
 		return stack.isEmpty();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { //using scanner to enter long line of brackets.
 		Scanner in = new Scanner(System.in);
 		String read = in.nextLine();
 		System.out.println(Bracketfilter(read));

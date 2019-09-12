@@ -22,7 +22,7 @@ public class CircularDLLS<T> implements Iterable<T> {
 	public Node <T> getTail(){
 		return tail;
 	}
-
+// since this is circular I could not iterate as I did before, results in infinite loop otherwise.
 	public void printTheThing(){
 
 		Node<T> counter = head;
@@ -35,7 +35,7 @@ public class CircularDLLS<T> implements Iterable<T> {
 		System.out.println();
 	}
 
-
+//require two additional methods that queues from either end of the 'circlular list'
 	public void queueHead(T element){
 		Node<T> newNode = new Node<>(element, head);
 
@@ -95,7 +95,7 @@ public class CircularDLLS<T> implements Iterable<T> {
 			}
 	}
 
-	public Iterator<T> iterator(){
+	public Iterator<T> iterator(){ //required to implement interface.
 		return new CircularQueueIterator<T> (this);
 	}
 }

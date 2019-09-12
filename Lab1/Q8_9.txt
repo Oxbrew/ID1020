@@ -1,0 +1,40 @@
+8.Explain what the advantages and disadvantages
+are of implementing a collection by
+an array and by a linked data structure respectively?
+
+Array implementation:
+- Instant access times since data is indexed.
+- Expanding an array is very costly.
+
+Linked data structure implementation:
+- 'Dynamic' size, i.e. can easily expand/contract in size without requiring
+as many processes taking place.
+- Easily add and remove new nodes by redirecting pointer information.
+- Takes linear time to access information, starts and heads and cycles through.
+- Requires more memory
+
+In general:
+Arrays are faster in access times and space in memory it utilizes (if full)
+and compared to its equivalent linked list. However linked lists allow for
+more flexible manipulation of data by not being as costly. By implementing a
+collection with an array we will see better performance if we are reading whilst
+a linked data structure will allow for easier 'push and pop' operations (and its equivalents).
+
+
+Disadvantages of a linked data structure:
+
+
+9.How could you determine if a collection type data structure,
+without size limitations, is implemented by an array
+or as a linked structure without access to the source code
+(assume you can run the code)?
+
+- Given that we know that a linked list has linear access times
+and arrays have instant access times, we can use this information
+to find out more. Where we will see variations in execution times is
+when arrays have to increase in size to fit more data. It will suddenly have to
+stop and copy its data into a new array, a costly operation. A linked list
+will remain constant in the increase time it takes to add and read data.
+
+If we use a timer whilst running the code we can attempt to spot if
+more data causes execution time to either jump or have a constant increase.

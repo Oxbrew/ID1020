@@ -14,7 +14,7 @@ public class Stack {
 		return  c;
 	}
 
-	public static char peek(){
+	public static char peek(){ //peek required for this to work, looks at top of stack.
 		return stackarray[head-1];
 	}
 

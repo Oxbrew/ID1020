@@ -23,13 +23,13 @@ int main() {
 
 void recursivefunct() {
 	char c;
-	c = getchar();
+	c = getchar(); // char = input from keyboard
 	//scanf("%c", &c );
 
-	if (c != '\n') {
-		recursivefunct();
-		putchar(c);
+	if (c != '\n') {  //while c is not 'enter' call recursive funct
+		recursivefunct(); //does not overwrite the previous c
+		putchar(c); // when 'enter' is reached, start printing.
 		//printf("%c\n", c );
 	}
 	printf("\n");
-}a
+}

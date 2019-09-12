@@ -1,6 +1,6 @@
 class main {
 	public static void main(String[] args) {
-	GenericDLLS<Character> list = new GenericDLLS<>();
+	GenericDLLS<Character> list = new GenericDLLS<>(); //new list object.
 	list.queue('a');
 	list.printTheThing();
 	list.deQueue();

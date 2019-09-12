@@ -17,7 +17,7 @@ public class GenericDLLS<T> implements Iterable<T> {
 		return tail;
 	}
 
-	// Q5 Addition
+	// Q5 Addition, method to find element.
 
 	public Node<T> findElementAt(Node<T> reference, int position){
 		Node<T> current = reference;
@@ -27,6 +27,8 @@ public class GenericDLLS<T> implements Iterable<T> {
 		return current;
 	}
 //****************************//
+
+//not circular so I can iterate again.
 	public void printTheThing(){
 		for (T element : this) {
 			System.out.println(element);
@@ -73,7 +75,7 @@ public class GenericDLLS<T> implements Iterable<T> {
 		Node<T> previous = pointingAt.previous;
 		Node<T> next = pointingAt.next;
 
-		if (previous != null && next != null) {
+		if (previous != null && next != null) { //main one, draw on board.
 			Node<T> temp = pointingAt.previous;
 			temp.next = pointingAt.next;
 			temp = pointingAt.next;

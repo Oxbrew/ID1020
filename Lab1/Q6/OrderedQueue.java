@@ -29,7 +29,7 @@ public class OrderedQueue implements Iterable<Integer> {
 		}
 		System.out.println();
 	}
-
+//method implemented to find the element bigger than current.
 	public iNode findBiggerElement(int number){
 		iNode current = head;
 		while(current.getElement() <= number){
@@ -37,7 +37,7 @@ public class OrderedQueue implements Iterable<Integer> {
 		}
 		return current;
 	}
-
+//when adding nodes I order directly by using the find findBiggerElement.
 	public void Queue(int element){
 		iNode temp = new iNode(element);
 
@@ -55,7 +55,7 @@ public class OrderedQueue implements Iterable<Integer> {
 		} else {
 
 		iNode bigElement = findBiggerElement(element);
-
+//draw on board.
 		temp.previous = bigElement.previous;
 		temp.next = bigElement;
 		temp.next.previous = temp;
