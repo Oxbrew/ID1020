@@ -1,3 +1,15 @@
+/*
+*@author: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab1
+*
+*Input:Tests already implemented.
+*Output: Printed current queue.
+*
+*Goal: Ordered Queue
+*/
+
+
 class Orderedmain {
 	public static void main(String[] args) {
 	OrderedQueue list = new OrderedQueue();

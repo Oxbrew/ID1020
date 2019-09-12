@@ -1,4 +1,16 @@
-class main {
+/*
+*@author: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab1
+*
+*Input:Tests already implemented.
+*Output: Printed current queue.
+*
+*Goal: Generic  Queue using double linked list being able to remove kth element
+*/
+
+
+class Q5main {
 	public static void main(String[] args) {
 	GenericDLLS<Character> list = new GenericDLLS<>();
 	list.queue('a');

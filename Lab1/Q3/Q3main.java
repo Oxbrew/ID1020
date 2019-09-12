@@ -1,4 +1,15 @@
-class main {
+/*
+*@author: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab1
+*
+*Input:Tests already implemented.
+*Output: Printed current queue.
+*
+*Goal: Generic FIFO Queue using double linked list.
+*/
+
+class Q3main {
 	public static void main(String[] args) {
 	GenericDLLS<Character> list = new GenericDLLS<>(); //new list object.
 	list.queue('a');

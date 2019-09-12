@@ -1,3 +1,13 @@
+/*
+*@author: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab1
+*
+*Input: Enter characters when running or redirect textfile
+*Output: Reversed characters
+*
+*Goal: Use an Iterable function in java to reverse characters.
+*/
 
 public class Iterablestack { //iterable stack + constructor and functions.
 	static int head = 0;

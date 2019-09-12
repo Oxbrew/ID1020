@@ -1,3 +1,15 @@
+/*
+*@author: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab1
+*
+*Input: Enter characters when running or redirect textfile
+*Output: Text where :: True = Balanced || False = Unbalanced.
+*
+*Goal: A filter which determines if paranthesis is balanced.
+*/
+
+
 import java.util.*;
 
 public class Bracketfilter{
