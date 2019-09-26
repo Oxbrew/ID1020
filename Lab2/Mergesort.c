@@ -17,7 +17,7 @@
 #include <stdio.h>
 
 void merge(int numbers[], int lo, int mid, int hi) {
-	int temp[100000]; //specify size
+	int temp[1000]; //specify size
 	int i = lo;
 	int j = mid + 1; //mid will be (hi + lo) / 2
 	int k = 0;
@@ -58,7 +58,7 @@ void merge(int numbers[], int lo, int mid, int hi) {
  }
 
 void main() {
-	int size = 100000;
+	int size = 1000;
 	//scanf("%d", &size);
 	int numbers[size];
 	for (int i = 0; i < size; i++) {

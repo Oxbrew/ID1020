@@ -32,9 +32,9 @@ void main() {
 
 	while ((c = getchar()) != EOF) {
 		if (isalpha(c))
-		 push(c);
+			push(c);
 	 	else
-		push(' ');
+			push(' ');
 	}
 
 	printArray(text);

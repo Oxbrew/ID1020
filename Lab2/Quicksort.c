@@ -82,14 +82,14 @@ void insertionQuickSort(int numbers[], int low, int high) {
 }
 
 void main() {
-	int size = 100000;   //hardcoded array size
+	int size = 1000000;   //hardcoded array size
 	//scanf("%d", &size);
 	int numbers[size];
 	for (int i = 0; i < size; i++) {
 		scanf("%d", &numbers[i]);
 	}
-	quickSort(numbers, 0, size-1);
-	//insertionQuickSort(numbers, 0 , size-1);
+	//quickSort(numbers, 0, size-1);
+	insertionQuickSort(numbers, 0 , size-1);
 
 	printf("The following is sorted with quickSort: \n" );
 	for (int i = 0; i < size; i++) {

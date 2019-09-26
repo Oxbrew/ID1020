@@ -1,0 +1,27 @@
+10) The list below is partially ordered by insertion sort up until 5.
+How many comparisons and swaps are needed to sort the 5?
+[1 3 4 8 9 5 2]
+
+ANSWER:
+3 comparisons
+2 Swaps
+
+[1 3 4 8 5 9 2] SWAPS 5 and 9 + Compare
+
+[1 3 4 5 8 9 2] SWAPS 5 and 8 + Compare
+
+[1 3 4 5 8 9 2] COMPARES 5 and 4
+
+
+Which method runs faster for each of the following items,
+selection sort or insertion sort?
+
+a) array with all keys identical
+b) sorted array
+c) array in reverse order
+
+
+ANSWER:
+a)InsertionSort: With all keys identical, it acts like a regular array
+b)InsertionSort: Less comparisons
+c)SelectionSort: If insertion sort was used a swap but take place each iteration
