@@ -1,41 +1,42 @@
-/*
-*@author: Philipe Granhäll
-*Algorithms & Datastructures: KTH ID1020
-*Lab3 Q1
-*
-*Input: Text file
-*Output: Only alphabetical characters from text file. Replacing any other symbol
-*with a ' '.
-*/
-
-
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#define SIZE 100
-
-char text[SIZE];
-int current = 0;
-
-char push(char c){
-	text[current++] = c;
-}
-
-void printArray(char array[]){
-	for (int i = 0; i < SIZE ; i++) {
-		printf("%c", array[i] );
-	}
-}
-
-void main() {
+void compareWord(char word[], int size){
 	char c;
-
+	int index = -1;
 	while ((c = getchar()) != EOF) {
-		if (isalpha(c))
-			push(c);
-	 	else
-			push(' ');
+		index++;
+		if (c == word[0]) {
+			char storing = c;
+			char otherWord[size];
+			otherWord[0] = c;
+			for (int i = 1; i < size ; i++) {
+					otherWord[i] = (storing = getchar());
+					index++;
+			}
+			if (((storing = getchar()) ==' ')|| (storing == '\n')  && (strcmp(word, otherWord) == 0)){
+				index++;
+				int wordIndex = index;
+				wordIndex -= size;
+				printf("%d \n", wordIndex);
+			} else
+				index++;
+			}
+		}
 	}
 
-	printArray(text);
+int main() {
+	/*printf("Enter the size of the word to index: " );
+	int size;
+	scanf("%d", &size);
+	printf("Now enter the word you are looking: " );
+	char word[size];
 
+	scanf("%s", word);
+
+	compareWord(word, size);*/
+
+	char word[] = "the";
+	compareWord(word, 3);
 }
