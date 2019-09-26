@@ -27,8 +27,20 @@ void printArray(char array[]){
 	}
 }
 
-void main() {
+void filter() {
 	char c;
+	while ((c = getchar()) != EOF) {
+		if (isalpha(c))
+			putchar(c);
+		else
+			putchar(' ');
+	}
+
+}
+
+void main() {
+	filter();
+	/*char c;
 
 	while ((c = getchar()) != EOF) {
 		if (isalpha(c))
@@ -37,6 +49,6 @@ void main() {
 			push(' ');
 	}
 
-	printArray(text);
+	printArray(text);*/
 
 }

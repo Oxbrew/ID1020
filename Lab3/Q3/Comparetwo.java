@@ -1,8 +1,5 @@
 import java.util.*;
 import java.io.*;
-import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.Scanner;
 
 public class Comparetwo<Key extends Comparable<Key>, Value> {
 
@@ -136,7 +133,7 @@ public class Comparetwo<Key extends Comparable<Key>, Value> {
             else return x;
         }
 
-	public void rankN(int n, int x){
+/*	public void rankN(int n, int x){
 	      Comparetwo<Key, Value> st = new Compare<Key, Value>();
 	      LinkedList<Key> list = new LinkedList<Key>();
 
@@ -169,89 +166,72 @@ public class Comparetwo<Key extends Comparable<Key>, Value> {
 	      }
 	  }
 
+*/
 
-    public static void main (String[]args){
+public static void main(String[] args) {
+	class Stopwatch {
 
-        class Stopwatch {
-            private final long start;
+	private final long start;
 
-            public Stopwatch() {
-                start = System.currentTimeMillis();
-            }
+	public Stopwatch() {
 
-            public double elapsedTime() {
-                long now = System.currentTimeMillis();
-                return (now - start) / 1000.0;
-            }
-        }
+	  start = System.currentTimeMillis();
+	}
 
-        Stopwatch timer = new Stopwatch();
+	public double elapsedTime() {
+				  long now = System.currentTimeMillis();
+				  return (now - start) / 1000.0;
+	}
+}
 
-        Scanner sc = new Scanner(System.in);
-        int minlen = 2; // key-length cutoff
-		int maxlen = 7;
-        Comparetwo<String, Integer> st = new Comparetwo<String, Integer>();
-        while (sc.hasNext()) { // Build symbol table and count frequencies.
-            String word = sc.next();
-            if (word.length() < minlen)
-                continue; // Ignore short keys.
-            if (!st.contains(word))
-                st.put(word, 1);
-            else
-                st.put(word, st.get(word) + 1);
-        }
-        // Find a key with the highest frequency count.
-        String max = "";
-        st.put(max, 0);
-        for (String word : st.keys())
-            if (st.get(word) >= st.get(max))
-                max = word;
-        System.out.println(max + " " + st.get(max));
+Scanner sc = new Scanner(System.in);
 
-        double time = timer.elapsedTime();
-        System.out.println("Algorithm 3.3 BST time: " + time);
+int minlen = 0; // key-length cutoff
 
-		Scanner in = new Scanner(System.in);
-		//int minlen = in.nextInt();
-		Comparetwo<String, Integer> st = new Comparetwo<String, Integer>();
-		while (in.hasNext()){
-			String word = in.next();
-			if (word.length()< minlen)
-				continue;
-			if (!st.contains(word))
-				st.put(word,1);
-			else
-				st.put(word, st.get(word) + 1);
-		}
-		Stopwatch timer = new Stopwatch();
-		String max = "";
-		st.put(max, 0);
-		size = maxlen - minlen;
-		String[] frequencyList = new String[size]; //size of interval
-		for (String word : st.keys()) {
-			if (st.get(word) > st.get(max)) {
-				max = word;
-			}
-		}
-		System.out.println(max + " " + st.get(max));
-		double time = timer.elapsedTime();
-		System.out.println("The time for Algorithm 3.3 is: " + time);
+Comparetwo<String, Integer> st = new Comparetwo<String, Integer>();
 
-		frequencyList[0] = max;
-		max = "";
+while (sc.hasNext()) { // Build symbol table and count frequencies.
+	String word = sc.next();
+	if (word.length() < minlen)
+				  continue; // Ignore short keys.
+	if (!st.contains(word))
+				  st.put(word, 1);
+	else
+	st.put(word, st.get(word) + 1);
+}
 
-		for (int i = 1; i < frequencyList.length; i++ ) {
-			for (String word : st.keys()) {
-				if (st.get(word) > st.get(max) && st.get(word) < st.get(frequencyList[i-1])) {
-					max = word;
-				}
-			}
-			frequencyList[i] = max;
-			max = "";
-		}
-		for (int i = minlen - 1; i < size; i++ ) {
-			System.out.println((i + 1) + ", " + frequencyList[i]);
+String[] frequencyList = new String[218]; //Change here to aray size
 
-		}
+String max = "";
+
+st.put(max, 0);
+Stopwatch timer = new Stopwatch();
+
+for (String word : st.keys()) {
+	if (st.get(word) > st.get(max)) {
+				  max = word;
+	}
+}
+
+System.out.println(max + " " + st.get(max));
+
+double time = timer.elapsedTime();
+
+System.out.println("The time it took in algorithm 3.3 is:" + time);
+frequencyList[0] = max; // put that key at index 0 in the list
+max = "";
+
+for (int i = 1; i < frequencyList.length; i++) { // now find the other key that occures most often and store it																																									// in array
+	for (String word : st.keys()) {
+
+		if (st.get(word) >= st.get(max) && st.get(word) < st.get(frequencyList[i - 1])) // if value bigger than max and smaller than the value before
+		   max = word;
+	}
+	frequencyList[i] = max; // update the list with the key
+	max = ""; // reset max
+}
+for (int i = 1 - 1; i < 218; i++) // print the list at the given interval
+
+	System.out.println((i + 1) + ". " + frequencyList[i] + "  " + st.get(frequencyList[i]));
 	}
 }
