@@ -48,7 +48,7 @@ public class SeparateChainingLiteHashST<Key, Value> {
 
 
     // hash value between 0 and m-1
-    private int hash(Key key) {
+    private int hash(Key key) { //hash function
         return (key.hashCode() & 0x7fffffff) % m;
     }
 
@@ -109,13 +109,17 @@ public class SeparateChainingLiteHashST<Key, Value> {
         return queue;
     }
 
-	public void linkedListSize(){
-		for (int i = 0; i < st.length ; i++ ) {
-			int length = st[i].LinkedList.size();
-			System.out.println(length);
+	public void printHT () {
+		for (int i = 0; i < st.length ; i++) {
+			int value = 0;
+			Node frequencies = st[i];
+			while( frequencies != null){
+				value++;
+				frequencies = frequencies.next;
+			}
+			System.out.println("Index: " + i + " has: " + value);
 		}
 	}
-
 
     /***************************************************************************
      *  Unit test client.
@@ -124,16 +128,31 @@ public class SeparateChainingLiteHashST<Key, Value> {
 
         Scanner sc = new Scanner(System.in);
 
-        SeparateChainingLiteHashST<String, Integer> st = new SeparateChainingLiteHashST<String, Integer>(97);
+        SeparateChainingLiteHashST<String, Integer> st = new SeparateChainingLiteHashST<String, Integer>(97); //138883
         for (int i = 0; sc.hasNext(); i++) {
             String key = sc.next();
             st.put(key, i);
         }
+		st.printHT();
 
-        // print keys
+    /*    // print keys
+		int count = 0;
+
         for (String s : st.keys())
-            System.out.println(s + " " + st.get(s));
+            //System.out.println(s + " " + st.get(s)); //UNCOMMENT FOR 5
+			count++;
 
-    }
+
+		int [] countedHash = new int[count];
+		int index = 0;
+		for (String s : st.keys()) {
+			countedHash[index] = st.get(s);
+			index++;
+		}
+		for (int i = 0; i < countedHash.length ; i++ ) {
+			System.out.println( countedHash[i]%97); // size of hash table being the provided hash
+		}*/
+
+	}
 
 }

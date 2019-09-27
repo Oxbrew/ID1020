@@ -132,41 +132,14 @@ public class Comparetwo<Key extends Comparable<Key>, Value> {
             if (t != null) return t;
             else return x;
         }
-
-/*	public void rankN(int n, int x){
-	      Comparetwo<Key, Value> st = new Compare<Key, Value>();
-	      LinkedList<Key> list = new LinkedList<Key>();
-
-	      Key iteKey = null;
-	      Value iteVal = null;
-
-	      for(int i = 0; i < x; i++){
-	          for(Key key : this.keys()){
-	              if(iteKey == null){
-	                  iteKey = key;
-	                  iteVal = this.get(key);
-	              }
-	              if(iteKey.compareTo(key) < 0 && !st.contains(key)){
-	                  iteKey = key;
-	                  iteVal = this.get(key);
-	              }
-	          }
-	          st.put(iteKey, iteVal);
-	          list.add(iteKey);
-	      }
-	        for(int i = 0; i < n; i++){
-	        	list.removeFirst();
-	        }
-
-	     ListIterator iterator = list.listIterator(0);
-
-	      while(iterator.hasNext()){
-	          //Key k = list.removeFirst();
-	          System.out.println(k + " " + get(k));
-	      }
-	  }
-
-*/
+		public boolean contains_word(String[] words, String word) {
+	for (int i = 0; i < words.length; i++) {
+		if (word.equals(words[i])) {
+			return true;
+		}
+	}
+	return false;
+}
 
 public static void main(String[] args) {
 	class Stopwatch {
@@ -200,38 +173,48 @@ while (sc.hasNext()) { // Build symbol table and count frequencies.
 	st.put(word, st.get(word) + 1);
 }
 
-String[] frequencyList = new String[218]; //Change here to aray size
+String[] frequencyList = new String[97]; // Set this to array size SET to 10 for assignment 3
 
-String max = "";
+		String max = "";
+		st.put(max, 0);
+		Stopwatch timer = new Stopwatch();
+		String[] maxes = new String[97]; //Set this to array size SET TO 10 for assignment 3
+		int index = 0;
 
-st.put(max, 0);
-Stopwatch timer = new Stopwatch();
+		for (String word : st.keys()) {
+			if (st.get(word) > st.get(max)) {
+				max = word;
+			}
+		}
+		System.out.println(max + " " + st.get(max));
+		double time = timer.elapsedTime();
+		System.out.println("The time it took in algorithm 3.3 is:" + time);
+		// here starts assignment 3
 
-for (String word : st.keys()) {
-	if (st.get(word) > st.get(max)) {
-				  max = word;
-	}
-}
+		frequencyList[0] = max; // put that key at index 0 in the list
+		maxes[index] = max;
+		index++;
+		max = "";
 
-System.out.println(max + " " + st.get(max));
+		for (int i = 1; i < frequencyList.length; i++) { // now find the other key that occures most often and store i in array
+			for (String word : st.keys()) {
+				if (st.get(word) >= st.get(max) && st.get(word) <= st.get(frequencyList[i - 1])) { // if value bigger than max and smaller than the value before
+					if (!st.contains_word(maxes, word)) {
+						max = word;
+					}
+				}
+			}
+			frequencyList[i] = max; // update the list with the key
 
-double time = timer.elapsedTime();
+			maxes[index] = max;
+			index++;
 
-System.out.println("The time it took in algorithm 3.3 is:" + time);
-frequencyList[0] = max; // put that key at index 0 in the list
-max = "";
+			max = ""; // reset max
+		}
+		int total = 0;
 
-for (int i = 1; i < frequencyList.length; i++) { // now find the other key that occures most often and store it																																									// in array
-	for (String word : st.keys()) {
-
-		if (st.get(word) >= st.get(max) && st.get(word) < st.get(frequencyList[i - 1])) // if value bigger than max and smaller than the value before
-		   max = word;
-	}
-	frequencyList[i] = max; // update the list with the key
-	max = ""; // reset max
-}
-for (int i = 1 - 1; i < 218; i++) // print the list at the given interval
-
-	System.out.println((i + 1) + ". " + frequencyList[i] + "  " + st.get(frequencyList[i]));
+		for (int i = (1 - 1); i < 97; i++) { // print the list at the given interval  SET TO E.G (6-1) WHEN ARRAY IS between 6-10 to get correct.
+			System.out.println((i + 1) + ". " + frequencyList[i] + "  " + st.get(frequencyList[i]));
+		}
 	}
 }
