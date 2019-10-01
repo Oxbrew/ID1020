@@ -8,24 +8,8 @@
 *with a ' '.
 */
 
-
 #include <stdio.h>
 #include <ctype.h>
-
-#define SIZE 100
-
-char text[SIZE];
-int current = 0;
-
-char push(char c){
-	text[current++] = c;
-}
-
-void printArray(char array[]){
-	for (int i = 0; i < SIZE ; i++) {
-		printf("%c", array[i] );
-	}
-}
 
 void filter() {
 	char c;
@@ -35,20 +19,8 @@ void filter() {
 		else
 			putchar(' ');
 	}
-
 }
 
 void main() {
 	filter();
-	/*char c;
-
-	while ((c = getchar()) != EOF) {
-		if (isalpha(c))
-			push(c);
-	 	else
-			push(' ');
-	}
-
-	printArray(text);*/
-
 }

@@ -1,7 +1,17 @@
+/*
+*@author: Majority of code taken from Robert Sedgewick + Kevin Wayne. Additions by: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab3 Q3
+*
+*Input: Text file
+*Output: Keys which fall in given range (rank) (most frequent words)
+*
+*/
+
 import java.util.*;
 import java.io.*;
 
-public class Comparetwo<Key extends Comparable<Key>, Value> {
+public class Q3BST<Key extends Comparable<Key>, Value> {
 
     private Node root; // root of BST
 
@@ -58,8 +68,7 @@ public class Comparetwo<Key extends Comparable<Key>, Value> {
 
     public int rank(Key key)
     { return rank(key, root); }
-    private int rank(Key key, Node x)
-    { // Return number of keys less than x.key in the subtree rooted at x.
+    private int rank(Key key, Node x) { // Return number of keys less than x.key in the subtree rooted at x.
         if (x == null) return 0;
         int cmp = key.compareTo(x.key);
         if (cmp < 0) return rank(key, x.left);
@@ -97,33 +106,27 @@ public class Comparetwo<Key extends Comparable<Key>, Value> {
             keys(x.right, queue, lo, hi);
     }
 
-        public Key min ()
-        {
+        public Key min (){
             return min(root).key;
         }
-        private Node min (Node x)
-        {
+        private Node min (Node x){
             if (x.left == null) return x;
             return min(x.left);
         }
 
-        public Key max ()
-        {
+        public Key max (){
             return max(root).key;
         }
-        private Node max (Node x)
-        {
+        private Node max (Node x){
             if (x.right == null) return x;
             return max(x.right);
         }
-        public Key floor (Key key)
-        {
+        public Key floor (Key key){
             Node x = floor(root, key);
             if (x == null) return null;
             return x.key;
         }
-        private Node floor (Node x, Key key)
-        {
+        private Node floor (Node x, Key key){
             if (x == null) return null;
             int cmp = key.compareTo(x.key);
             if (cmp == 0) return x;
@@ -132,7 +135,9 @@ public class Comparetwo<Key extends Comparable<Key>, Value> {
             if (t != null) return t;
             else return x;
         }
-		public boolean contains_word(String[] words, String word) {
+		//Also part of Q3
+
+		public boolean contains_word(String[] words, String word) { //Boolean for if string given exists.
 	for (int i = 0; i < words.length; i++) {
 		if (word.equals(words[i])) {
 			return true;
@@ -161,7 +166,7 @@ Scanner sc = new Scanner(System.in);
 
 int minlen = 0; // key-length cutoff
 
-Comparetwo<String, Integer> st = new Comparetwo<String, Integer>();
+Q3BST<String, Integer> st = new Q3BST<String, Integer>();
 
 while (sc.hasNext()) { // Build symbol table and count frequencies.
 	String word = sc.next();
@@ -172,6 +177,7 @@ while (sc.hasNext()) { // Build symbol table and count frequencies.
 	else
 	st.put(word, st.get(word) + 1);
 }
+/* TASK 3 STARTS FROM HERE */
 
 String[] frequencyList = new String[97]; // Set this to array size SET to 10 for assignment 3
 
@@ -189,14 +195,13 @@ String[] frequencyList = new String[97]; // Set this to array size SET to 10 for
 		System.out.println(max + " " + st.get(max));
 		double time = timer.elapsedTime();
 		System.out.println("The time it took in algorithm 3.3 is:" + time);
-		// here starts assignment 3
 
-		frequencyList[0] = max; // put that key at index 0 in the list
+		frequencyList[0] = max; // Key at index 0
 		maxes[index] = max;
 		index++;
 		max = "";
 
-		for (int i = 1; i < frequencyList.length; i++) { // now find the other key that occures most often and store i in array
+		for (int i = 1; i < frequencyList.length; i++) { //find key that occures most often, store i in array
 			for (String word : st.keys()) {
 				if (st.get(word) >= st.get(max) && st.get(word) <= st.get(frequencyList[i - 1])) { // if value bigger than max and smaller than the value before
 					if (!st.contains_word(maxes, word)) {
@@ -208,11 +213,8 @@ String[] frequencyList = new String[97]; // Set this to array size SET to 10 for
 
 			maxes[index] = max;
 			index++;
-
 			max = ""; // reset max
 		}
-		int total = 0;
-
 		for (int i = (1 - 1); i < 97; i++) { // print the list at the given interval  SET TO E.G (6-1) WHEN ARRAY IS between 6-10 to get correct.
 			System.out.println((i + 1) + ". " + frequencyList[i] + "  " + st.get(frequencyList[i]));
 		}

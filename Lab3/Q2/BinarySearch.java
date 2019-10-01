@@ -1,13 +1,22 @@
 import java.util.*;
 
+/*
+*@author: Majority of code taken from Robert Sedgewick + Kevin Wayne. Additions by: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab3 Q2
+*
+*Input: Text file
+*Output: frequency test
+*
+*/
 
-public class Compare<Key extends Comparable<Key>, Value> {
+public class BinarySearch<Key extends Comparable<Key>, Value> {
 
     private Key[] keys;
     private Value[] vals;
     private int N;
 
-    public Compare(int capacity) { // See Algorithm 1.1 for standard array-resizing code.
+    public BinarySearch(int capacity) {
         keys = (Key[]) new Comparable[capacity];
         vals = (Value[]) new Object[capacity];
     }
@@ -30,7 +39,6 @@ public class Compare<Key extends Comparable<Key>, Value> {
             return null;
     }
 
-    // See page 381.
     public void put(Key key, Value val) { // Search for key. Update value if found; grow table if new.
         int i = rank(key);
         if (i < N && keys[i].compareTo(key) == 0) {
@@ -88,18 +96,13 @@ public class Compare<Key extends Comparable<Key>, Value> {
         if (low == null || high == null) {
             throw new IllegalArgumentException("Key cannot be null");
         }
-
         Queue<Key> queue = new LinkedList<>();
-
         for (int i = rank(low); i < rank(high); i++) {
             queue.add(keys[i]);
         }
-
         if (contains(high)) {
             queue.add(keys[rank(high)]);
-
         }
-
         return queue;
     }
 
@@ -107,14 +110,24 @@ public class Compare<Key extends Comparable<Key>, Value> {
         return keys(min(), max());
     }
 
-
-
     public static void main(String[] args) {
+		class Stopwatch { //Stopwatch class.
+			private final long start;
+
+			public Stopwatch() {
+				start = System.currentTimeMillis();
+			}
+
+			public double elapsedTime() {
+				long now = System.currentTimeMillis();
+				return (now - start) / 1000.0;
+			}
+		}
 
         Scanner sc = new Scanner(System.in);
         int minlen = 2; // key-length cutoff
 
-        Compare<String, Integer> st = new Compare<String, Integer>(100);
+        BinarySearch<String, Integer> st = new BinarySearch<String, Integer>(100000);
         while (sc.hasNext()) { // Build symbol table and count frequencies.
             String word = sc.next();
             if (word.length() < minlen)
@@ -125,11 +138,16 @@ public class Compare<Key extends Comparable<Key>, Value> {
                 st.put(word, st.get(word) + 1);
         }
         // Find a key with the highest frequency count.
-        String max = "";
+		Stopwatch timer = new Stopwatch(); //Timer
+
+		String max = "";
         st.put(max, 0);
         for (String word : st.keys())
             if (st.get(word) > st.get(max))
                 max = word;
         System.out.println(max + " " + st.get(max));
+
+		double time = timer.elapsedTime();
+		System.out.println("Algorithm 3.2 Binary Search time: " + time);
     }
 }

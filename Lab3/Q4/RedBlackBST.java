@@ -1,3 +1,13 @@
+/*
+*@author: Majority of code taken from Robert Sedgewick + Kevin Wayne. Additions by: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab3 Q4
+*
+*Input: Text file
+*Output: frequency test
+*
+*/
+
 import java.util.*;
 import java.io.*;
 import java.util.LinkedList;
@@ -190,9 +200,11 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 	                st.put(word, st.get(word) + 1);
 	        }
 	        // Find a key with the highest frequency count.
-	        String max = "";
-	        st.put(max, 0);
 			Stopwatch timer = new Stopwatch();
+
+			String max = "";
+	        st.put(max, 0);
+
 	        for (String word : st.keys())
 	            if (st.get(word) >= st.get(max))
 	                max = word;
