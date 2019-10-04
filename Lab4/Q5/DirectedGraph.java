@@ -4,19 +4,20 @@ import java.util.LinkedList;
 import java.util.Stack;
 import java.util.Queue;
 
-public class Lab4_5{
-    public static class Digraph{
+public class DirectedGraph{
+
+	public static class Digraph{
 
         private final int V;
         private int E;
-        private Bag<Integer>[] adj;
+        private  ArrayList<LinkedList<Integer>>adj; //Bag<Integer>[] adj;
 
         public Digraph(int V){
             this.V = V;
             this.E = 0;
-            adj = (Bag<Integer>[]) new Bag[V];
+            adj = new ArrayList<LinkedList<Integer>>();//(Bag<Integer>[]) new Bag[V];
             for (int v = 0; v < V; v++)
-            adj[v] = new Bag<Integer>();
+            adj.add(new LinkedList<Integer>());//adj[v] = new Bag<Integer>();
         }
 
         public int V() { return V; }
@@ -24,11 +25,11 @@ public class Lab4_5{
         public int E() { return E; }
 
         public void addEdge(int v, int w){
-            adj[v].add(w);
+            adj.get(v).add(w); //adj[v].add(w);
             E++;
         }
 
-        public Iterable<Integer> adj(int v) { return adj[v]; }
+        public Iterable<Integer> adj(int v) { return adj.get(v);} //adj[v]; }
 
         public Digraph reverse(){
             Digraph R = new Digraph(V);

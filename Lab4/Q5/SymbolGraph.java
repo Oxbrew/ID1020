@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class SymbolGraph {
-
 	private ST<String, Integer> st; 	// String -> index :: Symbol table where strings are vertex names and ints are indices
 	private String[] keys; 				// index -> String :: Array inverted index , gives vertex name associated with each int index
 	private Digraph G;			 		// the graph
@@ -50,13 +49,36 @@ public class SymbolGraph {
 
 
 	/* BELOW IS THE DEPTH FIRST SEARCH ALGORITHM*/
+	public static class DirectedDFS{
 
-	public static class BFS {
+        private boolean[] marked;
+
+        public DirectedDFS(Digraph G, int s){
+            marked = new boolean[G.V()];
+            dfs(G, s);
+        }
+
+        public DirectedDFS(Digraph G, Iterable<Integer> sources){
+            marked = new boolean[G.V()];
+            for (int s : sources)
+            if (!marked[s]) dfs(G, s);
+        }
+
+        private void dfs(Digraph G, int v){
+            marked[v] = true;
+            for (int w : G.adj(v))
+            if (!marked[w]) dfs(G, w);
+        }
+
+        public boolean marked(int v)
+        { return marked[v]; }
+    }
+	/*public static class BFS {
 		private boolean[] marked; // Is a shortest path to this vertex known?
 		private int[] edgeTo; // last vertex on known path to this vertex
 		private final int s;
 		// source
-		public BFS(Diraph G, int s) {
+		public BFS(Digraph G, int s) {
 			marked = new boolean[G.V()];
 			edgeTo = new int[G.V()];
 			this.s = s;
@@ -89,7 +111,7 @@ public class SymbolGraph {
 				return path;
 			}
 	}
-
+*/
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
@@ -104,18 +126,14 @@ public class SymbolGraph {
 		String from = args[0];
 		String to = args[1];
 
-		BFS search = new BFS(SG.G(), SG.index(from));
+		DirectedDFS search = new DirectedDFS(SG.G(), SG.index(from));
 
 		System.out.println(from + " -> " + to + ": ");
-		if (search.hasPathTo(SG.index(to))) {
-			for (int i : search.pathTo(SG.index(to)) ) {
-				if (SG.name(i).equals(from))
-					System.out.print(SG.name(i));
-				else
-				System.out.print(" - " + SG.name(i) + " ");
-
-			}
+		//for (int v = 0; v < G.V(); v++)
+		if (search.marked(SG.index(to)))
+			System.out.println("Path exists ");
+		else
+			System.out.println("Path does not exist");
 		System.out.println();
 		}
-	}
 }
