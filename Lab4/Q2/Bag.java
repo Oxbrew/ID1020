@@ -1,11 +1,3 @@
-/*
-*@author: Majority of code taken from Robert Sedgewick + Kevin Wayne. Additions by: Philipe Granhäll
-*Algorithms & Datastructures: KTH ID1020
-*Lab4
-*
-* Bag API used throughout all labs.
-*/
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 

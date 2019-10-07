@@ -1,3 +1,11 @@
+/*
+*@author: Majority of code taken from Robert Sedgewick + Kevin Wayne. Additions by: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab4 Q1
+*
+* Directed Graph API used for Q5+
+*
+*/
 import java.util.*;
 
 public class Digraph{

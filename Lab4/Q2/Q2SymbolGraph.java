@@ -1,12 +1,22 @@
+/*
+*@author: Majority of code taken from Robert Sedgewick + Kevin Wayne. Additions by: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab4 Q2
+*
+*Input: Two states (abbreviated, separated with a space) + < Text file (data)
+*Output: Path from State 1 -> 2, order of vertices attained through BREADTH first serach.
+*
+*/
+
 import java.util.*;
 
-public class SymbolGraph {
+public class Q2SymbolGraph {
 
 	private ST<String, Integer> st; 	// String -> index :: Symbol table where strings are vertex names and ints are indices
 	private String[] keys; 				// index -> String :: Array inverted index , gives vertex name associated with each int index
 	private Graph G;			 		// the graph
 
-	public SymbolGraph(String stream, String sp) { 		//sp is a delimiter, in our case we use a " "
+	public Q2SymbolGraph(String stream, String sp) { 		//sp is a delimiter, in our case we use a " "
 		st = new ST<String, Integer>();
 		Scanner in = new Scanner(stream); 				// First pass
 		while (in.hasNextLine()){ 						// builds the index
@@ -49,7 +59,7 @@ public class SymbolGraph {
 	}
 
 
-	/* BELOW IS THE DEPTH FIRST SEARCH ALGORITHM*/
+	/* BELOW IS THE BREADTH FIRST SEARCH ALGORITHM*/
 
 	public static class BFS {
 		private boolean[] marked; // Is a shortest path to this vertex known?
@@ -87,11 +97,6 @@ public class SymbolGraph {
 					path.addFirst(x);
 				path.addFirst(s);
 
-
-				/*Stack<Integer> path = new Stack<Integer>();
-				for (int x = v; x != s; x = edgeTo[x])
-				path.push(x);
-				path.push(s);*/
 				return path;
 			}
 	}
@@ -105,7 +110,7 @@ public class SymbolGraph {
 		}
 		String out = sb.toString();
 
-		SymbolGraph SG = new SymbolGraph(out, " ");
+		Q2SymbolGraph SG = new Q2SymbolGraph(out, " ");
 
 		String from = args[0];
 		String to = args[1];

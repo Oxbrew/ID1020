@@ -1,3 +1,13 @@
+/*
+*@author: Majority of code taken from Robert Sedgewick + Kevin Wayne. Additions by: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab4 Q6
+*
+*Input:  < Text file (data)
+*Output: Either Has cycle or Does not have cycle.
+*
+*/
+
 import java.util.*;
 
 public class SymbolGraph {
@@ -103,9 +113,6 @@ public class SymbolGraph {
 		String out = sb.toString();
 
 		SymbolGraph SG = new SymbolGraph(out, " ");
-
-		//String from = args[0];
-		//String to = args[1];
 
 		DirectedCycle cycle = new DirectedCycle(SG.G());
 

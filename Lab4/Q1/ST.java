@@ -1,12 +1,11 @@
 /*
 *@author: Majority of code taken from Robert Sedgewick + Kevin Wayne. Additions by: Philipe Granhäll
 *Algorithms & Datastructures: KTH ID1020
-*Lab3 Q2
+*Lab4 Q1
 *
-*Input: Text file
-*Output: frequency test
-*
+* Symbol Table required to run SymbolGraph.
 */
+
 
 import java.util.*;
 

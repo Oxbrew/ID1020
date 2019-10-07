@@ -1,3 +1,12 @@
+/*
+*@author: Majority of code taken from Robert Sedgewick + Kevin Wayne. Additions by: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab4 Q6
+*
+*Input: < Text file (data)
+*Output: Topological sorted data.
+*
+*/
 import java.util.*;
 
 public class SymbolGraph {

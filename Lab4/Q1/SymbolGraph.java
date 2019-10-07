@@ -1,3 +1,13 @@
+/*
+*@author: Majority of code taken from Robert Sedgewick + Kevin Wayne. Additions by: Philipe Granhäll
+*Algorithms & Datastructures: KTH ID1020
+*Lab4 Q1
+*
+*Input: Two states (abbreviated, separated with a space) + < Text file (data)
+*Output: Path from State 1 -> 2, order of vertices attained through Depth first serach.
+*
+*/
+
 import java.util.*;
 
 public class SymbolGraph {
@@ -78,16 +88,13 @@ public class SymbolGraph {
 		public Iterable<Integer> pathTo(int v) {
 			if (!hasPathTo(v))
 				return null;
-			LinkedList<Integer> path = new LinkedList<Integer>();
+			LinkedList<Integer> path = new LinkedList<Integer>(); //Switched to LinkedList so that printing of data is in order I want.
 			for (int x = v ; x != s ; x = edgeTo[x])
 				path.addFirst(x);
 			path.addFirst(s);
 
 
-			/*Stack<Integer> path = new Stack<Integer>();
-			for (int x = v; x != s; x = edgeTo[x])
-			path.push(x);
-			path.push(s);*/
+
 			return path;
 		}
 	}
@@ -101,12 +108,12 @@ public class SymbolGraph {
 		}
 		String out = sb.toString();
 
-		SymbolGraph SG = new SymbolGraph(out, " ");
+		SymbolGraph SG = new SymbolGraph(out, " "); // Creating new symbol graph where words are separated by " ".
 
-		String from = args[0];
-		String to = args[1];
+		String from = args[0]; // First state
+		String to = args[1];   // To this state.
 
-		DFS search = new DFS(SG.G(), SG.index(from));
+		DFS search = new DFS(SG.G(), SG.index(from)); //Create a DFS object
 
 		System.out.println(from + " -> " + to + ": ");
 		if (search.hasPathTo(SG.index(to))) {
